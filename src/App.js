@@ -21,6 +21,12 @@ function App() {
         }]))
     }
 
+    function removeNote(id) {
+        setNotes(notes.filter(
+            note => note.id !== id
+        ))
+    }
+
     return (
         <div className='App'>
             <header className='header'>
@@ -37,7 +43,7 @@ function App() {
                 <Route path={'/notes'} render={() => <> </>}/>
             </div>
             <div className="notes">
-                <Notes notes={notes}/>
+                <Notes notes={notes} removeNote={removeNote}/>
             </div>
         </div>
     );
