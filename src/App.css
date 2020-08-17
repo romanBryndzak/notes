@@ -1,7 +1,11 @@
-.App header {
-    padding-top: 4rem;
+.App header, .notes {
     width: 450px;
     margin: 0 auto;
+}
+
+.App header {
+    padding-top: 4rem;
+    font-family: cursive;
 }
 
 .App {
@@ -12,10 +16,15 @@
     display: grid;
     grid-template-areas: "header" "page" "notes";
     margin: 5px;
-    grid-gap: 5px;
+    grid-gap: 3px;
 }
 
-.App .notes{
-    width: 450px;
-    margin: 0 auto;
+.App .page {
+    margin: 1rem 0 1rem 0;
+}
+
+button {
+    border: .5px solid darkgrey;
+    border-radius: 5px;
+    background-color: burlywood;
 }

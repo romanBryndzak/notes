@@ -10,9 +10,9 @@ import Settings from "./components/page/Settings";
 
 function App() {
     const [notes, setNotes] = React.useState([
-        {}
+        {id: 0, name: 'roma', content: 'React is very well library.'}
     ]);
-    console.log(notes);
+
     function createNote(text, name) {
         setNotes(notes.concat([{
             id: Date.now(),
@@ -24,10 +24,9 @@ function App() {
     return (
         <div className='App'>
             <header className='header'>
-                <h2>Title text</h2>
-                <Menu/>
+                <h2>SPA for create notes</h2><hr/>
+                <Menu/><hr/>
             </header>
-            <hr/>
             <div className='page'>
                 <Route path={'/Create'} render={() =>
                     <Create createNote={createNote}/>}
@@ -35,10 +34,10 @@ function App() {
                 <Route path={'/Edit'} render={() => <Edit/>}/>
                 <Route path={'/Comment'} render={() => <Comment/>}/>
                 <Route path={'/Settings'} render={() => <Settings/>}/>
-                <Route path={'/Notes'} render={() => <> </>}/>
+                <Route path={'/notes'} render={() => <> </>}/>
             </div>
             <div className="notes">
-                <Notes/>
+                <Notes notes={notes}/>
             </div>
         </div>
     );

@@ -1,0 +1,23 @@
+.wrapper {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapperNote {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.wrapperNote p {
+    display: flex;
+    justify-content: space-between;
+    margin: .2rem .3rem .2rem 2rem;
+    text-align: left;
+}
+
+.wrapperNote li {
+    border: 1px solid #b3b7bb;
+    padding: .3rem 1rem .3rem 1rem;
+    border-radius: 5px;
+}
