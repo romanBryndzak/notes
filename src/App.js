@@ -16,7 +16,7 @@ function App() {
     function createNote(text, name) {
         setNotes(notes.concat([{
             id: Date.now(),
-            name,
+            name: name,
             content: text,
         }]))
     }
@@ -30,8 +30,10 @@ function App() {
     return (
         <div className='App'>
             <header className='header'>
-                <h2>SPA for create notes</h2><hr/>
-                <Menu/><hr/>
+                <h2>SPA for create notes</h2>
+                <hr/>
+                <Menu/>
+                <hr/>
             </header>
             <div className='page'>
                 <Route path={'/Create'} render={() =>

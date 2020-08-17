@@ -16,12 +16,14 @@ function Create({createNote}) {
 
     return (
         <form onSubmit={formHandler} className='create'>
-            <input type="text" placeholder='name' onChange={
+            <input type="text" required placeholder='name' onChange={
                 event => setName(event.target.value)}
-                   className='name'
+                   value={name} className='name'
             />
-            <input type="text" placeholder='text' onChange={
-                event => setValue(event.target.value)}/>
+            <input type="text" placeholder='content' onChange={
+                event => setValue(event.target.value)}
+                   value={value}
+            />
             <button>Add</button>
         </form>
     )
