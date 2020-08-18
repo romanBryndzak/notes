@@ -10,14 +10,23 @@ import Settings from "./components/page/Settings";
 
 function App() {
     const [notes, setNotes] = React.useState([
-        {id: 0, name: 'roma', content: 'React is very well library.'}
+        {id: 0, name: 'roma', content: 'React is very well library.', createDate: '17 серпня, 22:35'}
     ]);
+
+    const date = new Date();
+    let options = {
+        hour: 'numeric',
+        minute: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
 
     function createNote(text, name) {
         setNotes(notes.concat([{
             id: Date.now(),
             name: name,
             content: text,
+            createDate: date.toLocaleString("ua", options)
         }]))
     }
 
@@ -37,15 +46,18 @@ function App() {
             </header>
             <div className='page'>
                 <Route path={'/Create'} render={() =>
-                    <Create createNote={createNote}/>}
+                    <Create notes={notes} createNote={createNote}/>}
                 />
-                <Route path={'/Edit'} render={() => <Edit/>}/>
-                <Route path={'/Comment'} render={() => <Comment/>}/>
+                <Route path={'/Edit'} render={() =>
+                    <Edit notes={notes}/>}
+                />
+                <Route path={'/Comment'} render={() =>
+                    <Comment notes={notes}/>}
+                />
                 <Route path={'/Settings'} render={() => <Settings/>}/>
-                <Route path={'/notes'} render={() => <> </>}/>
-            </div>
-            <div className="notes">
-                <Notes notes={notes} removeNote={removeNote}/>
+                <Route path={'/notes'} render={() =>
+                    <Notes notes={notes} removeNote={removeNote}/>}
+                />
             </div>
         </div>
     );

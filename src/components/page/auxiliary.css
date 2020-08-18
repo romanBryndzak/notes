@@ -1,14 +1,14 @@
-.create{
-    width: 450px;
-    margin: 0 auto;
+.create {
+    padding-bottom: 2rem;
 }
+
 .create input {
-    width: 240px;
-    margin-right: 15px;
+    width: 53%;
+    margin-right: 3.3%;
     border-radius: 5px;
     border: 1px solid black;
 }
 
-.create .name{
-   width: 130px;
+.create .name {
+    width: 29%;
 }

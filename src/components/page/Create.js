@@ -1,7 +1,15 @@
 import React from "react";
-import './auxiliary.css'
+import './auxiliary.css';
+import N from "./Notes.module.css";
+import CreateElement from "./CreateElement";
 
-function Create({createNote}) {
+
+
+function Create({notes, createNote}) {
+
+    const copyCreateElement = notes.map(note =>
+        <CreateElement note={note} key={note.id} createNote={createNote}/> );
+
     const [value, setValue] = React.useState('');
     const [name, setName] = React.useState('');
 
@@ -13,8 +21,8 @@ function Create({createNote}) {
             setName('')
         }
     }
-
-    return (
+    return <div>
+        <h3>Create</h3>
         <form onSubmit={formHandler} className='create'>
             <input type="text" required placeholder='name' onChange={
                 event => setName(event.target.value)}
@@ -26,7 +34,10 @@ function Create({createNote}) {
             />
             <button>Add</button>
         </form>
-    )
+        <ul className={N.wrapper}>
+            {copyCreateElement}
+        </ul>
+    </div>
 }
 
-export default Create;
+export default Create

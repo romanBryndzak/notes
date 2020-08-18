@@ -7,7 +7,8 @@ function Notes({notes, removeNote}) {
     return (
         <ul className={N.wrapper}>
             {notes.map(note => {
-                    return <NoteItem removeNote={removeNote}
+                    return <NoteItem
+                        removeNote={removeNote}
                         note={note} key={note.id}
                     />
                 }
