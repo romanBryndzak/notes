@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.wrapperNote {
+.wrapper .wrapperNote {
     margin-bottom: 1rem;
     text-align: left;
 }
@@ -22,11 +22,22 @@
     border-radius: 5px;
 }
 
+.wrapper .wrapperComment {
+    border: solid .3px #58a3ff;
+    border-radius: 5px;
+    width: 85%;
+    margin-left: 7%;
+}
+
+.wrapper .wrapperComment .wrapperNote {
+    margin: .5rem;
+}
+
 .addComment {
     display: flex;
     justify-content: space-between;
 }
 
-.addComment input{
-   width: 70%;
+.addComment input {
+    width: 70%;
 }

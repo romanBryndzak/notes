@@ -4,11 +4,10 @@ import N from "./Notes.module.css";
 import CreateElement from "./CreateElement";
 
 
-
 function Create({notes, createNote}) {
 
     const copyCreateElement = notes.map(note =>
-        <CreateElement note={note} key={note.id} createNote={createNote}/> );
+        <CreateElement note={note} key={note.id} createNote={createNote}/>);
 
     const [value, setValue] = React.useState('');
     const [name, setName] = React.useState('');
@@ -21,6 +20,7 @@ function Create({notes, createNote}) {
             setName('')
         }
     }
+
     return <div>
         <h3>Create</h3>
         <form onSubmit={formHandler} className='create'>

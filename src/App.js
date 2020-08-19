@@ -5,12 +5,16 @@ import Create from "./components/page/Create";
 import {Route} from "react-router-dom";
 import Notes from "./components/page/Notes";
 import Edit from "./components/page/Edit";
-import Comment from "./components/page/Comment";
 import Settings from "./components/page/Settings";
 
 function App() {
     const [notes, setNotes] = React.useState([
-        {id: 0, name: 'roma', content: 'React is very well library.', createDate: '17 серпня, 22:35'}
+        {
+            id: 0, name: 'roma', content: 'React is very well library.', createDate: '17 серпня, 22:35',
+            comment: [
+                {id: 0, author: 'jon', text: 'Yes, of course.', datePublic: '17 серпня, 23:50'},
+            ]
+        }
     ]);
 
     const date = new Date();
@@ -45,19 +49,16 @@ function App() {
                 <hr/>
             </header>
             <div className='page'>
+                <Route path={'/notes'} render={() =>
+                    <Notes notes={notes} removeNote={removeNote}/>}
+                />
                 <Route path={'/Create'} render={() =>
                     <Create notes={notes} createNote={createNote}/>}
                 />
                 <Route path={'/Edit'} render={() =>
                     <Edit notes={notes}/>}
                 />
-                <Route path={'/Comment'} render={() =>
-                    <Comment notes={notes}/>}
-                />
                 <Route path={'/Settings'} render={() => <Settings/>}/>
-                <Route path={'/notes'} render={() =>
-                    <Notes notes={notes} removeNote={removeNote}/>}
-                />
             </div>
         </div>
     );
