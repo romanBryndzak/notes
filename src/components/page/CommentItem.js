@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 import N from './Notes.module.css'
 
-function CommentItem({comment}) {
+const CommentItem = ({comment}) => {
 
     return (
+
         <div className={N.wrapperNote}>
             <p>
                 <strong>{comment.author}</strong>{comment.datePublic}
             </p>
-            <li>
-            <span>
-                {comment.text}
-            </span>
-            </li>
+
+                <li className={N.addComment}>
+                    <span>{comment.text}</span>
+                </li>
         </div>
     )
-}
+};
 
 export default CommentItem

@@ -13,19 +13,12 @@ h3 {
 }
 
 .App {
-    text-align: center;
-}
-
-.App {
     display: grid;
     grid-template-areas: "header" "page";
-    margin: 5px;
+    margin: 1rem;
     grid-gap: 3px;
+    text-align: center;
 }
-
-/*.App .page {*/
-/*    margin: 1rem 0 1rem 0;*/
-/*}*/
 
 button {
     border: .5px solid darkgrey;

@@ -3,7 +3,6 @@ import N from "./Notes.module.css";
 
 function CreateElement({note}) {
 
-
     return (
         <div className={N.wrapperNote}>
             <p><strong>{note.name}</strong>

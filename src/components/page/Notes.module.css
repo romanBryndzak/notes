@@ -9,17 +9,22 @@
     text-align: left;
 }
 
-.wrapperNote p {
+.wrapper .wrapperNote p {
     display: flex;
     justify-content: space-between;
     margin: .2rem .3rem .2rem 2rem;
     text-align: left;
 }
 
-.wrapperNote li {
+.wrapper .wrapperNote li {
     border: 1px solid #b3b7bb;
     padding: .3rem 1rem .3rem 1rem;
     border-radius: 5px;
+}
+
+.wrapper .wrapperNote .editBox input {
+    width: 80%;
+    margin-right: 11%;
 }
 
 .wrapper .wrapperComment {
@@ -31,6 +36,10 @@
 
 .wrapper .wrapperComment .wrapperNote {
     margin: .5rem;
+}
+
+.wrapper .onButComment {
+    margin-top: .5rem;
 }
 
 .addComment {

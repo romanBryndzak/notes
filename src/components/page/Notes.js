@@ -1,18 +1,19 @@
 import React from "react";
 import NoteItem from "./NoteItem";
+import N from "./Notes.module.css";
 
-function Notes({notes, removeNote}) {
+function Notes({notes, removeNote, createComment}) {
 
     return (
-        <div>
+        <ul className={N.wrapper}>
             {notes.map(note => {
-                    return <NoteItem
-                        removeNote={removeNote}
-                        note={note} key={note.id}
-                    />
-                }
-            )}
-        </div>
+                return <NoteItem
+                    createComment={createComment}
+                    removeNote={removeNote}
+                    note={note} key={note.id}
+                />
+            })}
+        </ul>
     )
 }
 

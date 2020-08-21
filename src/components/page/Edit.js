@@ -3,10 +3,10 @@ import N from "./Notes.module.css";
 import EditElement from "./EditElement";
 
 
-function Edit({notes}) {
+function Edit({notes, editingNote}) {
 
     const copyEditElement = notes.map(note =>
-        <EditElement note={note} key={note.id}/>);
+        <EditElement note={note} key={note.id} editingNote={editingNote}/>);
 
     return <div>
         <h3>Edit</h3>
