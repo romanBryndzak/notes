@@ -1,5 +1,5 @@
-import React from "react";
-import N from "./Notes.module.css";
+import React from 'react';
+import N from './Notes.module.css';
 
 function CreateElement({note}) {
 

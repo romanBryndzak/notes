@@ -1,5 +1,5 @@
-import React from "react";
-import './auxiliary.css';
+import React from 'react';
+import N from './Notes.module.css'
 
 
 function FormComment({id, createElement}) {
@@ -17,12 +17,12 @@ function FormComment({id, createElement}) {
     }
 
     return (
-        <form onSubmit={formHandler} className='create'>
-            <input type="text" required placeholder='name' onChange={
+        <form onSubmit={formHandler} className={N.create}>
+            <input type='text' required placeholder='name' onChange={
                 event => setName(event.target.value)}
-                   value={name} className='name'
+                   value={name} className={N.name}
             />
-            <input type="text" placeholder='content' onChange={
+            <input type='text' placeholder='content' onChange={
                 event => setValue(event.target.value)}
                    value={value}
             />

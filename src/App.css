@@ -14,7 +14,7 @@ h3 {
 
 .App {
     display: grid;
-    grid-template-areas: "header" "page";
+    grid-template-areas: 'header' 'page';
     margin: 1rem;
     grid-gap: 3px;
     text-align: center;

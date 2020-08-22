@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import N from "./Notes.module.css";
+import React, {useState} from 'react';
+import N from './Notes.module.css';
 
 function EditElement({note, editingNote}) {
     const [toggleEdit, setToggleEdit] = useState(true);

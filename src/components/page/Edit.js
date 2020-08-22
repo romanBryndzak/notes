@@ -1,6 +1,6 @@
-import React from "react";
-import N from "./Notes.module.css";
-import EditElement from "./EditElement";
+import React from 'react';
+import N from './Notes.module.css';
+import EditElement from './EditElement';
 
 
 function Edit({notes, editingNote}) {

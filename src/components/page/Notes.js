@@ -1,6 +1,6 @@
-import React from "react";
-import NoteItem from "./NoteItem";
-import N from "./Notes.module.css";
+import React from 'react';
+import NoteItem from './NoteItem';
+import N from './Notes.module.css';
 
 function Notes({notes, removeNote, createComment}) {
 

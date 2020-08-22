@@ -1,8 +1,7 @@
-import React from "react";
-import './auxiliary.css';
-import N from "./Notes.module.css";
-import CreateElement from "./CreateElement";
-import FormComment from "./FormComment";
+import React from 'react';
+import N from './Notes.module.css';
+import CreateElement from './CreateElement';
+import FormComment from './FormComment';
 
 
 function Create({notes, createNote}) {

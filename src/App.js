@@ -1,22 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import Menu from './components/Menu';
-import Create from "./components/page/Create";
-import {Route} from "react-router-dom";
-import Notes from "./components/page/Notes";
-import Edit from "./components/page/Edit";
-import Settings from "./components/page/Settings";
+import Create from './components/page/Create';
+import {Route} from 'react-router-dom';
+import Notes from './components/page/Notes';
+import Edit from './components/page/Edit';
+import Settings from './components/page/Settings';
 
 function App() {
 
-    let object = [{
-        id: 0, name: 'roma', content: 'React is very well library.', createDate: '17 серпня, 22:35',
-        comments: [
-            {id: 0, author: 'jon', text: 'Yes, of course.', datePublic: '17 серпня, 23:50'},
-        ]
-    }];
+    // let object = [{
+    //     id: 0, name: 'roma', content: 'React is very well library.', createDate: '17 серпня, 22:35',
+    //     comments: [
+    //         {id: 0, author: 'jon', text: 'Yes, of course.', datePublic: '17 серпня, 23:50'},
+    //     ]
+    // }];
 
-    let [notes, setNotes] = useState(object);
+    let [notes, setNotes] = useState([]);
+
+    useEffect(() => {
+        let objectNotes = localStorage.getItem('object');
+        if (objectNotes) {
+            objectNotes = JSON.parse(objectNotes);
+            setNotes(objectNotes)
+        }
+
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('object', JSON.stringify(notes))
+    }, [notes]);
 
     const date = new Date();
     let options = {
@@ -31,7 +44,7 @@ function App() {
                 id: Date.now(),
                 name,
                 content,
-                createDate: date.toLocaleString("ua", options),
+                createDate: date.toLocaleString('ua', options),
                 comments: undefined
             }])
         );
@@ -44,7 +57,7 @@ function App() {
                     id: Date.now(),
                     author,
                     text: text,
-                    datePublic: date.toLocaleString("ua", options)
+                    datePublic: date.toLocaleString('ua', options)
                 })
             }
             return note
@@ -95,3 +108,16 @@ function App() {
 }
 
 export default App;
+
+// useEffect(() => {
+//         let objectNotes = localStorage.getItem('object');
+//         if (objectNotes) {
+//             objectNotes = JSON.parse(objectNotes);
+//             setNotes(objectNotes)
+//         }
+//     },
+//     []);
+//
+// useEffect(() => {
+//     localStorage.setItem('object', JSON.stringify(notes))
+// }, [notes]);
