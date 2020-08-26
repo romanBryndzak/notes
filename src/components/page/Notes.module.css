@@ -28,9 +28,14 @@
 }
 
 /**Edit Notes**/
+.ulWrapper .wrapperEditNote li {
+    padding: .3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
 .ulWrapper .wrapperEditNote .editBox input {
     width: 80%;
-    margin-right: 11%;
 }
 
 /**Note Comment**/
