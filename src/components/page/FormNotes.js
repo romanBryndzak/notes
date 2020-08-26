@@ -1,8 +1,8 @@
 import React from 'react';
 import N from './Notes.module.css'
 
+function FormNotes({id, createElement, pattern, title}) {
 
-function FormComment({id, createElement}) {
     const [value, setValue] = React.useState('');
     const [name, setName] = React.useState('');
     let noteId = id;
@@ -17,13 +17,14 @@ function FormComment({id, createElement}) {
     }
 
     return (
-        <form onSubmit={formHandler} className={N.create}>
-            <input type='text' required placeholder='name' onChange={
-                event => setName(event.target.value)}
+        <form onSubmit={formHandler} className={N.FormNotes}>
+            <input type='text' required placeholder='name'
+                   pattern={pattern} title={title}
+                   onChange={event => setName(event.target.value)}
                    value={name} className={N.name}
             />
-            <input type='text' placeholder='content' onChange={
-                event => setValue(event.target.value)}
+            <input type='text' placeholder='content'
+                   onChange={event => setValue(event.target.value)}
                    value={value}
             />
             <button>Add</button>
@@ -31,4 +32,4 @@ function FormComment({id, createElement}) {
     )
 }
 
-export default FormComment
+export default FormNotes

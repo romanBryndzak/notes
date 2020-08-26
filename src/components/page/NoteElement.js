@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import N from './Notes.module.css'
-import CommentItem from './CommentItem';
-import FormComment from './FormComment';
+import NoteComment from './NoteComment.js';
+import FormNotes from './FormNotes.js';
 
-const NoteItem = ({note, removeNote, createComment}) => {
+const NoteElement = ({note, removeNote, createComment}) => {
+
     const [onButValue, setOnButValue] = useState(true);
 
-    if (note.comments === undefined || null) {
+    if (!note.comments) {
         note.comments = []
     }
     const copyCommentItem = note.comments.map(comment =>
-        <CommentItem comment={comment} key={comment.id}/>
+        <NoteComment comment={comment} key={comment.id}/>
     );
 
     return (
@@ -25,17 +26,22 @@ const NoteItem = ({note, removeNote, createComment}) => {
                 </li>
             </div>
             <p><strong>comments</strong></p>
-            <div className={N.wrapperComment}>
+            <div className={N.wrapperNoteComment}>
                 {copyCommentItem}
             </div>
             <div className={N.onButComment}>
                 {onButValue
                     ? <button onClick={() => setOnButValue(false)}>comment</button>
-                    : <FormComment id={note.id} createElement={createComment}/>
+                    : <FormNotes
+                        id={note.id} createElement={createComment}
+                        pattern='[A-Z][A-Za-z]{1,} [A-Z][A-Za-z]{1,}'
+                        title='Please, enter two worlds with capital letter.'
+                    />
                 }
             </div>
+            <hr/>
         </div>
     )
 };
 
-export default NoteItem
+export default NoteElement

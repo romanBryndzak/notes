@@ -1,61 +1,69 @@
-.wrapper {
+.ulWrapper {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.wrapper .wrapperNote {
-    margin-bottom: 1rem;
-    text-align: left;
-}
-
-.wrapper .wrapperNote p {
+.ulWrapper .wrapperNote p,
+.wrapperNoteComment p,
+.wrapperCreateNote p,
+.wrapperEditNote p {
     display: flex;
     justify-content: space-between;
     margin: .2rem .3rem .2rem 2rem;
     text-align: left;
 }
 
-.wrapper .wrapperNote li {
+.ulWrapper .wrapperNote,
+.wrapperCreateNote,
+.wrapperEditNote {
+    margin: 1rem 0 .5rem 0;
+    text-align: left;
+}
+
+.ulWrapper li {
     border: 1px solid #b3b7bb;
     padding: .3rem 1rem .3rem 1rem;
     border-radius: 5px;
 }
 
-.wrapper .wrapperNote .editBox input {
+/**Edit Notes**/
+.ulWrapper .wrapperEditNote .editBox input {
     width: 80%;
     margin-right: 11%;
 }
 
-.wrapper .wrapperComment {
+/**Note Comment**/
+.ulWrapper .wrapperNoteComment {
     border: solid .3px #58a3ff;
     border-radius: 5px;
     width: 85%;
-    margin-left: 7%;
+    margin: 0 7% 1rem 7%;
 }
 
-.wrapper .wrapperComment .wrapperNote {
+.ulWrapper .wrapperNoteComment .wrapperComment {
     margin: .5rem;
 }
 
-.wrapper .onButComment {
-    margin-top: .5rem;
-}
-
-.addComment {
+.wrapperComment .addComment {
     display: flex;
     justify-content: space-between;
 }
 
-.addComment input {
+.wrapperComment .addComment input {
     width: 70%;
 }
 
-.create {
+.ulWrapper .onButComment {
+    margin-top: .5rem;
+}
+
+/**Form Notes**/
+.FormNotes {
     padding-bottom: 2rem;
 }
 
-.create input {
+.FormNotes input {
     width: 53%;
     margin-right: 3.3%;
     border-radius: 5px;
@@ -63,6 +71,12 @@
     margin-bottom: .5rem;
 }
 
-.create .name {
+.FormNotes .name {
     width: 29%;
+}
+
+/**Setting**/
+.containerSetting button {
+    background-color: whitesmoke;
+    margin: 1rem;
 }

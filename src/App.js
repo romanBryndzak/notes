@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import Menu from './components/Menu';
-import Create from './components/page/Create';
+import CreateNotes from './components/page/CreateNotes';
 import {Route} from 'react-router-dom';
 import Notes from './components/page/Notes';
-import Edit from './components/page/Edit';
+import EditNotes from './components/page/EditNotes';
 import Settings from './components/page/Settings';
+import *as firebase from "firebase";
 
 function App() {
 
@@ -16,23 +17,53 @@ function App() {
     //     ]
     // }];
 
-    let [notes, setNotes] = useState([]);
+    const [notes, setNotes] = useState(null);
+    const [dataPlaceSetting, setDataPlaceSetting] = useState('');
+
 
     useEffect(() => {
-        let objectNotes = localStorage.getItem('object');
-        if (objectNotes) {
-            objectNotes = JSON.parse(objectNotes);
-            setNotes(objectNotes)
+        debugger
+        const setting = localStorage.getItem('dataPlaceSetting');
+        if (setting) {
+            setDataPlaceSetting(setting)
+        } else {
+            localStorage.setItem('dataPlaceSetting', dataPlaceSetting);
+            setDataPlaceSetting('localStorage')
         }
-
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('object', JSON.stringify(notes))
+        localStorage.setItem('dataPlaceSetting', dataPlaceSetting);
+        if (dataPlaceSetting === 'firebase') {
+            firebase.database().ref('notes').child('object')
+                .on('value', snap => {
+                    setNotes(JSON.parse(snap.val()))
+                });
+        }
+        if (dataPlaceSetting === 'localStorage') {
+            let objectNotes = localStorage.getItem('object');
+            if (objectNotes) {
+                objectNotes = JSON.parse(objectNotes);
+                setNotes(objectNotes)
+            }
+        }
+    }, [dataPlaceSetting]);
+
+
+    useEffect(() => {
+        if (notes !== null) {
+            if (dataPlaceSetting === 'firebase') {
+                firebase.database().ref(`notes/object`).set(JSON.stringify(notes))
+                    .catch(error => alert(error));
+            }
+            if (dataPlaceSetting === 'localStorage') {
+                localStorage.setItem('object', JSON.stringify(notes))
+            }
+        }
     }, [notes]);
 
     const date = new Date();
-    let options = {
+    const options = {
         hour: 'numeric',
         minute: 'numeric',
         month: 'long',
@@ -93,31 +124,23 @@ function App() {
                 <Route path={'/notes'} render={() =>
                     <Notes notes={notes}
                            removeNote={removeNote}
-                           createComment={createComment}/>}
-                />
+                           createComment={createComment}
+                    />
+                }/>
                 <Route path={'/Create'} render={() =>
-                    <Create notes={notes} createNote={createNote}/>}
-                />
+                    <CreateNotes notes={notes} createNote={createNote}/>
+                }/>
                 <Route path={'/Edit'} render={() =>
-                    <Edit notes={notes} editingNote={editingNote}/>}
-                />
-                <Route path={'/Settings'} render={() => <Settings/>}/>
+                    <EditNotes notes={notes} editingNote={editingNote}/>
+                }/>
+                <Route path={'/Settings'} render={() =>
+                    <Settings dataPlaceSetting={dataPlaceSetting}
+                              setDataPlaceSetting={setDataPlaceSetting}
+                    />
+                }/>
             </div>
         </div>
     );
 }
 
 export default App;
-
-// useEffect(() => {
-//         let objectNotes = localStorage.getItem('object');
-//         if (objectNotes) {
-//             objectNotes = JSON.parse(objectNotes);
-//             setNotes(objectNotes)
-//         }
-//     },
-//     []);
-//
-// useEffect(() => {
-//     localStorage.setItem('object', JSON.stringify(notes))
-// }, [notes]);

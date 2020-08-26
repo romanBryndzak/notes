@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import N from './Notes.module.css';
 
-function EditElement({note, editingNote}) {
+function EditNotesElement({note, editingNote}) {
+
     const [toggleEdit, setToggleEdit] = useState(true);
     const [valueEdit, setValueEdit] = useState(note.content);
 
@@ -11,7 +12,7 @@ function EditElement({note, editingNote}) {
     }
 
     return (
-        <div className={N.wrapperNote}>
+        <div className={N.wrapperEditNote}>
             <p><strong>{note.name}</strong>
                 {note.createDate}
                 <button onClick={() => setToggleEdit(false)}>editing</button>
@@ -29,4 +30,4 @@ function EditElement({note, editingNote}) {
 
 }
 
-export default EditElement
+export default EditNotesElement

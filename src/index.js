@@ -6,6 +6,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {HashRouter} from "react-router-dom";
+import * as firebase from "firebase";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAAJGX4vBIICaZ73tYtzTvMu00G40G9LAg",
+    authDomain: "create-notes-5516f.firebaseapp.com",
+    databaseURL: "https://create-notes-5516f.firebaseio.com",
+    projectId: "create-notes-5516f",
+    storageBucket: "create-notes-5516f.appspot.com",
+    messagingSenderId: "1012676424231",
+    appId: "1:1012676424231:web:03e1c536ae80d6a6855402"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
     <React.StrictMode>

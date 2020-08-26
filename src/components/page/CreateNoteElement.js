@@ -1,10 +1,10 @@
 import React from 'react';
 import N from './Notes.module.css';
 
-function CreateElement({note}) {
+function CreateNoteElement({note}) {
 
     return (
-        <div className={N.wrapperNote}>
+        <div className={N.wrapperCreateNote}>
             <p><strong>{note.name}</strong>
                 {note.createDate}
             </p>
@@ -17,4 +17,4 @@ function CreateElement({note}) {
     )
 }
 
-export default CreateElement;
+export default CreateNoteElement;
